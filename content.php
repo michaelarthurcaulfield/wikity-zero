@@ -252,7 +252,7 @@ echo "</p>";
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?><br>
 
 	</footer><!-- .entry-footer -->
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 <?php endif ?>
 
 </article><!-- #post-## -->
