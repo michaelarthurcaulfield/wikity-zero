@@ -343,7 +343,7 @@ jQuery(document).ready(function($){
 	<br><small>You can read your cards by clicking the title on the card. If you are logged in, edit them by clicking the small dot after the title (full editor) or clicking on the text of the card (quick editor).</small><br><br>
 	<small>Additional options: <a href="/home">Home</a>,
 	<a href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('<?php echo get_site_url() ?>/?sourceurl='+encodeURIComponent(q)+'&selection='+encodeURIComponent(d)+'&title='+encodeURIComponent(p),'Wikity','toolbar=no,width=700,height=500'));">Wik-it!</a>,
-						<?php wp_loginout($_SERVER['REQUEST_URI']); ?>, <a href="">Get Theme</a>, <a href="?s=Settings::">Settings</a>, <a href="">How-to</a><br>, <a href="http://wikity.cc">Wikity.cc</a>,
+						<?php wp_loginout($_SERVER['REQUEST_URI']); ?>, <a href="https://github.com/michaelarthurcaulfield/wikity-zero/">Get Theme from GitHub</a>, <a href="?s=Settings::">Settings</a>, <a href="">How-to</a><br>, <a href="http://wikity.cc">Wikity.cc</a>,
 						<form method="post" action="./">Search:
             <input name="s" id="s" onclick="$('#c').val($('#formcontent').val()); $('#t').val($('#formtitle').val());" value="<?php echo $form_s; ?>">
             <input name="c" id="c" type="hidden" value="">
