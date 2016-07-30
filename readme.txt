@@ -8,15 +8,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, pink, purple, white, yellow, dark, light, two-columns, left-sidebar, fixed-layout, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 
 ==  Wikity Zero ==
-Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.
+Wikity Zero is a Wordpress Theme you can use to create a personal wiki for notes, bookmarks, photos, or anything else. Unlike traditional bookmarking tools, Wikity lets you connect ideas and share your work with others while maintaining attribution.
 
-* Mobile-first, Responsive Layout
-* Custom Colors
-* Custom Header
-* Social Links
-* Menu Description
-* Post Formats
-* Federated Content
+Wikity is particularly useful for classes where students are encouraged to document and connect their learning.
+
 * The GPL v2.0 or later license. :) Use it to make something cool.
 
 For more information about Twenty Fifteen please go to https://codex.wordpress.org/Twenty_Fifteen.
