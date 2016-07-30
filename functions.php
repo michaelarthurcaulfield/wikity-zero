@@ -1050,16 +1050,16 @@ function write_initial_pages(){
     
     
     
-   $sql =  $wpdb->prepare("SELECT post_content FROM $wpdb->posts WHERE post_name = %s", "getting-started-day-one");
+   $sql =  $wpdb->prepare("SELECT post_content FROM $wpdb->posts WHERE post_name = %s", "help-getting-started-day-one");
    $publish_instructions = $wpdb->get_var($sql);
     if (strlen($publish_instructions) == 0):
       $publish_instructions = "Most people find that using Wikity to bookmark is a good place to start. The following video shows how you can bookmark with Wikity. \n\n";
       $publish_instructions .= "https://www.youtube.com/watch?v=66IGbiATzsY \n\n";
       $publish_instructions.= "Note that in the video the bookmark says 'Bkmrk' but in recent versions says 'Wik-it'. The editor has also been upgraded\n\n";
        $my_post = array(
-        'slug'           => "getting-started-day-one",
+        'slug'           => "help-getting-started-day-one",
         'post_content'   => $publish_instructions,
-        'post_title'     => "Getting Started: Day One",
+        'post_title'     => "Help:: Getting Started / Day One",
         'post_status'    => 'publish'
         );
       wp_insert_post( $my_post, true );
