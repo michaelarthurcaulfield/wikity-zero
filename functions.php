@@ -881,6 +881,18 @@ function do_quick_update($wpdb){
   $title = $_POST['title'];
   $title = preg_replace("/:: */", ":: ", $title);
   $content = $_POST['content'];
+  /* Replace simple tags with Markdown */
+  $content = preg_replace("/\t/i", " ", $content); // replace tab
+  $content = preg_replace("/<[\/]*em>/i", "_", $content);
+  $content = preg_replace("/<[\/]*strong>/i", "_", $content);
+  $content = preg_replace("/<[\/]*b>/i", "_", $content);
+  $content = preg_replace("/<[\/]*i>/i", "_", $content);
+  $content = preg_replace("/<[\/]*i>/i", "_", $content);
+  $content = preg_replace("/[ ]*<li>/i", "* ", $content);
+  $content = preg_replace("/<\/li>/i", "", $content);
+  $content = preg_replace("/<[u|o]l>/i", "\n", $content);
+  $content = preg_replace("/<\/[u|o]l>/i", "\n ", $content);
+  $content = strip_invisible_tags( $content); 
   $slug = sanitize_title_with_dashes( trim($title), $unused, $context = 'save' );
   $postid = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '$slug'");
   if ($postid) {
@@ -995,7 +1007,30 @@ function do_quick_update($wpdb){
      $c = str_replace("\n&gt;","\n>",$c);
      return $c;
   }
-  
+
+
+
+function strip_invisible_tags( $text )
+{
+    $text = preg_replace(
+        array(
+          // Remove invisible content
+            '@<head[^>]*?>.*?</head>@siu',
+            '@<style[^>]*?>.*?</style>@siu',
+            '@<script[^>]*?.*?</script>@siu',
+            '@<object[^>]*?.*?</object>@siu',
+            '@<embed[^>]*?.*?</embed>@siu',
+            '@<applet[^>]*?.*?</applet>@siu',
+            '@<noframes[^>]*?.*?</noframes>@siu',
+            '@<noscript[^>]*?.*?</noscript>@siu',
+            '@<noembed[^>]*?.*?</noembed>@siu',
+        ),
+        array(
+            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+        ),
+        $text );
+    return $text;
+}
   
 function reset_permalinks() {
     global $wp_rewrite;
