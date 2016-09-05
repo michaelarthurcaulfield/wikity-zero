@@ -23,6 +23,7 @@
 				 * @since Twenty Fifteen 1.0
 				 */
 				do_action( 'twentyfifteen_credits' );
+                if (!is_page()){
 				$footer = getSetting("Footer");
 				if ($footer == ''){
 		       $footer_settings = "Original content licensed CC-BY-SA. Articles may contain material under different licenses, check the links, history, and other attribution.\n\nSite proudly powered by WordPress.";
@@ -36,7 +37,10 @@
 				}
 				$parsedown = new Parsedown_WP_Parser();
 				echo $parsedown->text($footer);
-			?>
+			} else {
+			    echo '<i>This site is run on Wikity software, a hypertext card system that runs on WordPress. You can get <a href="https://github.com/michaelarthurcaulfield/wikity-zero/" style="color:blue">Wikity for free on GitHub</a>.</i>';
+			}
+                ?>
 		</div><!-- .site-info -->
 	</footer><!-- .site-footer -->
 
