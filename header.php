@@ -11,9 +11,10 @@
 
  if (is_single()) {
 
-   if (substr(get_the_title( $ID ),0,6) == 'Path::' and strlen($_GET['path']) == 0) {
+   if (substr(get_the_title( $ID ),0,9) == 'CardBox::' and strlen($_GET['cardbox']) == 0) {
      /* Get Path Name */
-     $path_name= trim(explode(":",get_the_title())[2]);
+     $cardbox_name= trim(explode(":",get_the_title())[2]);
+
      $chr_map = array(
 	   // Windows codepage 1252
 	   "\xC2\x82" => "'", // U+0082⇒U+201A single low-9 quotation mark
@@ -42,14 +43,14 @@
 		);
 		$chr = array_keys  ($chr_map); // but: for efficiency you should
 		$rpl = array_values($chr_map); // pre-calculate these two arrays
-		$path_name = str_replace($chr, $rpl, html_entity_decode($path_name, ENT_QUOTES, "UTF-8"));
+		$cardbox_name = str_replace($chr, $rpl, html_entity_decode($cardbox_name, ENT_QUOTES, "UTF-8"));
 
-     $path_content= get_post(get_the_ID())->post_content;
-     preg_match_all("/\[\[([^]]*)\]\]/", $path_content, $path_array);
+     $cardbox_content= get_post(get_the_ID())->post_content;
+     preg_match_all("/\[\[([^]]*)\]\]/", $cardbox_content, $cardbox_array);
 
      /* Get Start Page */
 
-     header('Refresh:0; url=/'.sanitize_title_with_dashes($path_array[1][0]).'?path='.$path_name);
+     header('Refresh:0; url=/'.sanitize_title_with_dashes($cardbox_array[1][0]).'?cardbox='.$cardbox_name);
      die('');
    }
 }

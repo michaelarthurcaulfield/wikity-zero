@@ -188,9 +188,9 @@ echo "</p>";
 	  $display_copy = '';
 	}
 
-  if (strlen($_GET['path']) > 0) {
-            $path_name = $_GET['path'];
-            $path_post = get_page_by_title('Path:: '.$path_name, OBJECT, 'post');
+  if (strlen($_GET['cardbox']) > 0) {
+            $path_name = $_GET['cardbox'];
+            $path_post = get_page_by_title('CardBox:: '.$path_name, OBJECT, 'post');
             preg_match_all('/\[\[(.*?)\]\]/',$path_post->post_content, $link_array);
             foreach ($link_array[1] as $key => $value) {
               if (sanitize_title_with_dashes($value) == sanitize_title_with_dashes(get_the_title())) {

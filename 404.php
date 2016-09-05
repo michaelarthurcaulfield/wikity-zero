@@ -15,11 +15,11 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Create or Add Page', 'twentyfifteen' ); ?></h1>
+					<h1 class="page-title"><?php _e( 'Create or Add Card', 'twentyfifteen' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<?php _e( 'This page is not yet on this site. If you are this site\'s curator, you should copy it from somewhere else, or write a new one!', 'twentyfifteen' ); ?>
+					<?php _e( 'This card is not yet on this site. If you are this site\'s curator, you should copy it from somewhere else, or write a new one!', 'twentyfifteen' ); ?>
 <?php
 
 $sites = $_GET['sites'];
@@ -43,7 +43,7 @@ $found_one = 0;
 
 <?php
 
-echo "<em>Pages found on Wikity.cc named $title:</em><br><br>";
+echo "<em>Cards found on Wikity.cc named $title:</em><br><br>";
 
 $string = file_get_contents("http://wikity.cc/?findbyname=$query_title");
 $json_a = json_decode($string, true);
@@ -62,7 +62,7 @@ $found_on_wikity = 1;
 }
 }
 
-if ($found_on_wikity==0)  echo "<p>No pages by this name found on Wikity.cc.</p>";
+if ($found_on_wikity==0)  echo "<p>No cards by this name found on Wikity.cc.</p>";
 
 $sites_arr = explode(',',$sites);
 $actual_link = 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
@@ -84,7 +84,7 @@ if (strlen($sites)){
   }
 
 if ($found_one == 0) {
-    echo "<p>No pages by this name found on sites referenced in page history. You might be on your own for this one!</p>";
+    echo "<p>No cards by this name found on sites referenced in page history. You might be on your own for this one!</p>";
   }
 } else {
   echo "<p>No other sites referenced in page history. If you get others to copy this, you will see their additions. </p>";

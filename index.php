@@ -226,12 +226,12 @@ get_header();
 
 <div id="checkedUrlsDiv" style="margin-top: 2px; border: 2px solid black; box-shadow: 10px 10px 5px #888888; background-color: white; opacity:.95; position:fixed; z-index: 300; display:none; padding:10px">
   <form name="forkform" id="forkform" method="post" action="">
-  <span style="font-size:8pt; font-weight:bold">Path Name: <input style="font-size:8pt; font-weight:bold" id="pathtitle" name="title" value="Recently Added"></span>
+  <span style="font-size:8pt; font-weight:bold">CardBox Name: <input style="font-size:8pt; font-weight:bold" id="cardboxtitle" name="title" value="Recently Added"></span>
   <br><textarea style="font-size:8pt; font-weight:bold; display:none" name="content" id="checkedUrls"></textarea>
   <span style="font-size:8pt"><span id="numcards">0</span> cards selected.
   <br><span style="font-size:8pt">Send to http://</span><input name="forkto" id="forkto" type="text" onkeypress="$('#forkform').attr('action', 'http://' + $('#forkto').val());" style="font-size:8pt; font-weight:bold; width:200px" value="<?php 	echo str_replace("http://", "", get_site_url())?>">
   <input type="hidden" name="mergetype" value="addtop">
-  <input type="submit" style="font-size:10px" value="Add to Path" onclick="$('#forkform').attr('action', 'http://' + $('#forkto').val()); $('#pathtitle').val('Path:: ' +  $('#pathtitle').val()); return true;">
+  <input type="submit" style="font-size:10px" value="Add to CardBox" onclick="$('#forkform').attr('action', 'http://' + $('#forkto').val()); $('#cardboxtitle').val('CardBox:: ' +  $('#cardboxtitle').val()); return true;">
   <input type="button" style="font-size:10px" value="Cancel" onclick="$('#checkedUrlsDiv').hide();">
   </form>
 

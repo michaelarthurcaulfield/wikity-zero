@@ -29,7 +29,7 @@
 
 
 function output_xml_headers(){
-	 header('Access-Control-Allow-Origin: *');
+   header('Access-Control-Allow-Origin: *');
    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
    header('Access-Control-Max-Age: 1000');
    if(array_key_exists('HTTP_ACCESS_CONTROL_REQUEST_HEADERS', $_SERVER)) {
@@ -271,8 +271,8 @@ add_filter( 'tiny_mce_before_init', 'disable_mce_wptextpattern' );
 function wiki_links($match) {
     $text = $match[1];
     $slug = sanitize_title_with_dashes($text, '', 'save');
-    $path = $_GET['path'];
-    return '<a id="'.$slug.'" href="'.get_site_url().'/'.$slug.'/?path='.$path.'&t='.$text.'" onclick="document.location.href=this.href + \'&sites=\' + search_context; return false;">'.$text.'</a>';
+    $cardbox = $_GET['cardbox'];
+    return '<a id="'.$slug.'" href="'.get_site_url().'/'.$slug.'/?cardbox='.$cardbox.'&t='.$text.'" onclick="document.location.href=this.href + \'&sites=\' + search_context; return false;">'.$text.'</a>';
 }
 
 
@@ -305,24 +305,6 @@ function ext_links($match){
    }
    return $ret;
 }
-
-
-
-/*
-function add_ann($match){
-  return '<div style="color:gray; height: 2px; background-color: black; text-align: center; margin-top:100px;">'.
-        '<span style="background-color: white; position: relative; top: -0.5em;">'.
-        '&nbsp;&nbsp;&nbsp; Annotations and Associations &nbsp;&nbsp;&nbsp;'.
-        '</span></div><br><br>';
-}
-
-function get_ann($atts) {
-    return '<div style="color:gray; height: 2px; background-color: black; text-align: center; margin-top:100px;">'.
-            '<span style="background-color: white; position: relative; top: -0.5em;">'.
-            '&nbsp;&nbsp;&nbsp; Annotations and Associations &nbsp;&nbsp;&nbsp;'.
-            '</span></div><br><br>';
-}
-*/
 
 function get_w($atts) {
      $a = shortcode_atts( array(
