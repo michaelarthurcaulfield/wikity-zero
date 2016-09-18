@@ -8,9 +8,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, pink, purple, white, yellow, dark, light, two-columns, left-sidebar, fixed-layout, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 
 ==  Wikity Zero ==
-Wikity Zero is a Wordpress Theme you can use to create a personal wiki for notes, bookmarks, photos, or anything else. Unlike traditional bookmarking tools, Wikity lets you connect ideas and share your work with others while maintaining attribution. And because it runs on WordPress your work is always portable -- your site can run anywhere WordPress can (You do need sufficient permissions to upload the theme).
+Wikity Zero is a hypertext card library that runs as a WordPress theme. 
 
-Wikity is particularly useful for classes where students are encouraged to document and connect their learning. USe it as a replacement for the standard learning journal or graded notebook.
+You can use to create a personal wiki for notes, bookmarks, photos, or anything else. Unlike traditional bookmarking tools, Wikity lets you connect ideas and share your work with others while maintaining attribution. And because it runs on WordPress your work is always portable -- your site can run anywhere WordPress can (You do need sufficient permissions to upload the theme).
+
+Wikity is particularly useful for classes where students are encouraged to document and connect their learning. Use it as a replacement for the standard learning journal or graded notebook.
 
 Made under the GPL v2.0 or later license. :) Use it to make something cool.
 

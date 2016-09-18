@@ -1,0 +1,92 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>wikity-zero</Name>
+    <ProjectGuid>{77683008-944e-4131-a762-e99f44b4377a}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="css\epic\bartik.css" />
+    <Compile Include="css\epic\epic-dark.css" />
+    <Compile Include="css\epic\epic-light.css" />
+    <Compile Include="css\epic\epiceditor.css" />
+    <Compile Include="css\epic\github.css" />
+    <Compile Include="css\epic\preview-dark.css" />
+    <Compile Include="css\epic\preview-light.css" />
+    <Compile Include="css\simplemde\simplemde.css" />
+    <Compile Include="css\editor-style.css" />
+    <Compile Include="css\ie.css" />
+    <Compile Include="css\ie7.css" />
+    <Compile Include="genericons\COPYING.txt" />
+    <Compile Include="genericons\genericons.css" />
+    <Compile Include="genericons\Genericons.eot" />
+    <Compile Include="genericons\Genericons.svg" />
+    <Compile Include="genericons\Genericons.ttf" />
+    <Compile Include="genericons\Genericons.woff" />
+    <Compile Include="genericons\LICENSE.txt" />
+    <Compile Include="genericons\README.md" />
+    <Compile Include="inc\back-compat.php" />
+    <Compile Include="inc\custom-header.php" />
+    <Compile Include="inc\customizer.php" />
+    <Compile Include="inc\template-tags.php" />
+    <Compile Include="inc\wikity-zero.zip" />
+    <Compile Include="js\simplemde\codemirror\tablist.js" />
+    <Compile Include="js\simplemde\simplemde.js" />
+    <Compile Include="js\color-scheme-control.js" />
+    <Compile Include="js\customize-preview.js" />
+    <Compile Include="js\epiceditor.js" />
+    <Compile Include="js\functions.js" />
+    <Compile Include="js\html5.js" />
+    <Compile Include="js\keyboard-image-navigation.js" />
+    <Compile Include="js\simplemde.zip" />
+    <Compile Include="js\skip-link-focus-fix.js" />
+    <Compile Include="languages\twentyfifteen.pot" />
+    <Compile Include=".gitattributes" />
+    <Compile Include=".gitignore" />
+    <Compile Include="404.php" />
+    <Compile Include="archive.php" />
+    <Compile Include="author-bio.php" />
+    <Compile Include="comments.php" />
+    <Compile Include="content-link.php" />
+    <Compile Include="content-none.php" />
+    <Compile Include="content-page.php" />
+    <Compile Include="content-search.php" />
+    <Compile Include="content.php" />
+    <Compile Include="error_log" />
+    <Compile Include="fed.php" />
+    <Compile Include="footer.php" />
+    <Compile Include="functions.php" />
+    <Compile Include="header.php" />
+    <Compile Include="image.php" />
+    <Compile Include="index.php" />
+    <Compile Include="page.php" />
+    <Compile Include="readme.txt" />
+    <Compile Include="rtl.css" />
+    <Compile Include="screenshot.jpg" />
+    <Compile Include="sidebar.php" />
+    <Compile Include="single.php" />
+    <Compile Include="style.css" />
+    <Compile Include="wikity.htm" />
+    <Compile Include="wikity.komodoproject" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\epic" />
+    <Folder Include="css\simplemde" />
+    <Folder Include="css" />
+    <Folder Include="genericons" />
+    <Folder Include="inc" />
+    <Folder Include="js\simplemde\codemirror" />
+    <Folder Include="js\simplemde" />
+    <Folder Include="js" />
+    <Folder Include="languages" />
+  </ItemGroup>
+</Project>

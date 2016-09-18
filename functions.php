@@ -376,7 +376,7 @@ add_shortcode('copy', 'get_create');
 
 
 function get_pagehistory($atts) {
-    return '<h5>Page History</h5>';
+    return '<h5>Card History</h5>';
 
 }
 
@@ -888,8 +888,9 @@ function do_quick_update($wpdb){
   // Add new content to top: used in "Add to Path"
   
   if ($_POST['mergetype'] == "addtop"){
-
-    $content = $content."\n".$old_content;
+    $first_bracket_pos = strpos($old_content,'[[');
+    $content = substr($old_content,0,$first_bracket_pos).$content."\n".substr($old_content,$first_bracket_pos);
+    
   }
   
   // ACTIONS: Read first line, look for actions
@@ -964,8 +965,8 @@ function do_quick_update($wpdb){
    die('');
   endif;
   }
-  
-  
+
+
   function createSynopsis($c){
       $res = str_replace("\r\n","\n",$c);
       $res = str_replace("\n\n","\n",$res);
@@ -977,8 +978,8 @@ function do_quick_update($wpdb){
       $res = substr($res,0,370).'...';
       return $res;
   }
-  
-  
+
+
   function formatSpecialLinks($c){
      $c = str_replace('[cite]','[<sup>&deg;</sup>]',$c);
      $c = str_replace('[link]','[<small>(Link)</small>]',$c);
@@ -1013,7 +1014,7 @@ function strip_invisible_tags( $text )
         $text );
     return $text;
 }
-  
+
 function reset_permalinks() {
     global $wp_rewrite;
     $wp_rewrite->set_permalink_structure( '/%postname%/' );
@@ -1045,7 +1046,7 @@ function publish_later_on_feed($where) {
 add_filter('posts_where', 'publish_later_on_feed');
 
 function write_initial_pages(){
-  
+
   /*** Settings Page ***/
    global $wpdb;
    $sql =  $wpdb->prepare("SELECT post_content FROM $wpdb->posts WHERE post_name = %s", "settings-publishing");
@@ -1064,9 +1065,9 @@ function write_initial_pages(){
         );
       wp_insert_post( $my_post, true );
     endif;
-    
-    
-    
+
+
+
    $sql =  $wpdb->prepare("SELECT post_content FROM $wpdb->posts WHERE post_name = %s", "help-getting-started-day-one");
    $publish_instructions = $wpdb->get_var($sql);
     if (strlen($publish_instructions) == 0):
@@ -1081,11 +1082,11 @@ function write_initial_pages(){
         );
       wp_insert_post( $my_post, true );
     endif;
-    
-    
+
+
 }
 
-add_filter('after_setup_theme', 'write_initial_pages'); 
+add_filter('after_setup_theme', 'write_initial_pages');
 
 function check_feed_permissions() {
   global $wpdb;
@@ -1103,3 +1104,44 @@ add_action('do_feed_rss2', 'check_feed_permissions', 1);
 add_action('do_feed_atom', 'check_feed_permissions', 1);
 add_action('do_feed_rss2_comments', 'check_feed_permissions', 1);
 add_action('do_feed_atom_comments', 'check_feed_permissions', 1);
+
+function returnCardLinks($CardName){
+  global $wpdb;
+  $sql =  $wpdb->prepare("SELECT post_content FROM $wpdb->posts WHERE post_name = %s",  sanitize_title_with_dashes($CardName, '', 'save'));
+  $CardText = $wpdb->get_var($sql);
+  $CardText_lines = split("\n", $CardText);
+  $unique_links = array();
+  foreach ($CardText_lines as $ln) {
+      $match = preg_match_all("/\[\[([^\]]+)\]\]/", $ln, $wl_array);
+      if ($match){
+        if (is_array($wl_array[1])){
+            for ($idx=1; $idx <= count($wl_array); $idx++){
+                for ($idx2 = 0; $idx2 < count($wl_array[$idx]); $idx2++)
+                    if (!in_array($wl_array[$idx][$idx2], $unique_links)){
+                        array_push($unique_links, $wl_array[$idx][$idx2]);
+                    }
+            }
+        } else {
+            if (!in_array($wl_array[$idx], $unique_links)){
+                array_push($unique_links, $wl_array[1]);
+            }
+        }
+      }
+  }
+  return $unique_links;
+}
+
+function addCardTags($cardName){
+    global $wpdb;
+    $unique_links = returnCardLinks($cardName);
+    for ($idx=0; $idx<count($unique_links); $idx++){
+        $sql =  $wpdb->prepare("SELECT post_content FROM $wpdb->posts WHERE post_name = %s",  sanitize_title_with_dashes($unique_links[$idx], '', 'save'));
+        print $unique_links[$idx];
+        $cardText = $wpdb->get_var($sql);
+        echo $cardText;
+
+    }
+    print_r($unique_links);
+    die('');
+}
+

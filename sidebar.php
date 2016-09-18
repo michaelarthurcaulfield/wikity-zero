@@ -24,7 +24,8 @@ if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) || is_active_sidebar(
 
       $summary = preg_split("/\[\[/", $path_content)[0];
       $path_content = trim(substr($path_content, strlen($summary)));
-      $path_content = str_replace("\n;","<br>",$path_content);
+      // $path_content = preg_replace('/# ([^\n]*)\n/', "<h3>$1</h3>");
+      $path_content = preg_replace('/\n# ([^\n]*)\n/','<br><br><h3 class="widget-title">$1</h3>',$path_content);
       $path_content = preg_replace_callback('/\[\[(.*?)\]\]/', 'wiki_links', $path_content);
 	  $path_content = preg_replace('/>\*([^<]*)</','><div style="margin-left:20px; font-size:80%; border:none; display:list-item">$1</div><',$path_content);
       echo '<small>'.$summary.'</small><br><br>';

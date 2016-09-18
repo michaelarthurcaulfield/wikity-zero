@@ -87,7 +87,7 @@ if ($found_one == 0) {
     echo "<p>No cards by this name found on sites referenced in page history. You might be on your own for this one!</p>";
   }
 } else {
-  echo "<p>No other sites referenced in page history. If you get others to copy this, you will see their additions. </p>";
+  echo "<p>No other sites referenced in page card history. If you get others to copy this, you will see their additions. </p>";
 }
 ?>
 

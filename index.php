@@ -1,6 +1,7 @@
 <?php
 
 
+
 /**
  * The main template file
  *
@@ -14,12 +15,12 @@
  * @package WordPress
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
- 
- **/ 
+
+ **/
 
 /**
 
-Index handles the following fedwiki calls: 
+Index handles the following fedwiki calls:
 
 * Quick updates from the catalog view
 * Popups from the Wik-it plugin
@@ -49,7 +50,7 @@ if ( ! current_user_can( 'edit_posts' )):
     if (strpos($publish_settings,"OPEN: No")):
       require_once( ABSPATH . '/wp-admin/admin.php' );
     endif;
- 
+
 endif;
 
 /**** QUICK UPDATES ****/
@@ -89,8 +90,8 @@ if (strlen($_GET['action']) > 0 && $_GET['action'] == 'json'){
 
 /* INDEX API: SITEMAP
 
-Returns inventory of site cards in JSON format. 
-Levels of detail: 
+Returns inventory of site cards in JSON format.
+Levels of detail:
 
 short: basic card info, plus first 266 characters.
 long: basic card info and full text
@@ -106,21 +107,21 @@ if (strlen($_GET['action']) && $_GET['action'] == 'siteslist'){
     }
     die("");
 }
-  
+
 
 if (strlen($_GET['action']) > 0 && $_GET['action'] == 'sitemap'){
     output_sitemap($_GET['detail'],$_GET['name_q']);
     die("");
-} 
+}
 
 
 
 /* INDEX API: FEDWIKI (GIVE CARD)
 
-Name is that way for historical reasons, sorry. 
-Gets JSON in fedwiki format for given page. 
+Name is that way for historical reasons, sorry.
+Gets JSON in fedwiki format for given page.
 Returns full JSON record for card: Title, "Story", "Journal", etc.
-Adds a fork record to history 
+Adds a fork record to history
 Form: http://rainystreets.wikity.cc/?fedwiki=netflix-is-shrinking
 
 */
@@ -130,7 +131,7 @@ if (strlen($_GET['fedwiki']) > 0){
   // headers_list
 
   output_xml_headers();
-  
+
 
   $fedwiki = $_GET['fedwiki'];
   $sql =  $wpdb->prepare("SELECT post_title FROM $wpdb->posts WHERE post_name = %s", array($fedwiki));
@@ -219,7 +220,7 @@ if (strlen($_GET['slug']) > 0){
 
 global $query_string;
 query_posts($query_string . '&orderby=modified');
-get_header(); 
+get_header();
 
 ?>
 
@@ -246,7 +247,6 @@ get_header();
     <?php if ( current_user_can( 'edit_posts' ) || current_user_can( get_post_type_object( 'post' )->cap->create_posts ) ) : ?>
     
 
-    <xscript src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/simplemde/simplemde.js"></xscript>
     <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
     

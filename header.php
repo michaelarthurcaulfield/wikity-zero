@@ -72,7 +72,7 @@
 	<?php wp_head(); ?>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 
   <xscript src="http://wikity.net/defiant-latest.min.js"></xscript>
   <xscript src="http://sugarjs.com/release/current/sugar.min.js"></xscript>
