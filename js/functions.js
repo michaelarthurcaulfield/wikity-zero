@@ -305,19 +305,28 @@ function openEditBox(boxId, bottom){
 	}
 }
 
-function updateUrlList (val, op){
+function updateUrlList(val, op) {
+    cardname_arr = val.split('/');
+    cardname =  cardname_arr[cardname_arr.length-2];
 	$("#checkedUrlsDiv").show();
 	if (op) {
 		if ($("#checkedUrls").text() ==''){
-			$("#checkedUrls").append("[[" + val + "]]");
+		    $("#checkedUrls").append("[[" + val + "]]");
+		    $("#pinnedcards").append(cardname);
 		} else {
-			$("#checkedUrls").append("\n[[" + val + "]]");
+		    $("#checkedUrls").append("\n[[" + val + "]]");
+		    $("#pinnedcards").append(',' + cardname);
 		}
 	} else {
-		newText = $("#checkedUrls").text().replace("[[" + val + "]]","");
-	  newText = newText.replace("\n\n","\n");
-		newText = newText.replace(/\n+$/, "");
+	    newText = $("#checkedUrls").text().replace("[[" + val + "]]", "");
+	    newPins = $("#pinnedcards").text().replace(cardname, "");
+	    newText = newText.replace("\n\n", "\n");
+	    newPins = newPins.replace(",,", ",");
+	    newText = newText.replace(/\n+$/, "");
+	    newPins = newPins.replace(/,$/, "");
+	    newPins = newPins.replace(/^,/, "");
 		$("#checkedUrls").text(newText);
+		$("#pinnedcards").text(newPins);
 	}
   if ($("#checkedUrls").text().length) {
 		$("#numcards").text($("#checkedUrls").text().split("\n").length);

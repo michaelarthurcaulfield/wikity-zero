@@ -348,6 +348,7 @@ jQuery(document).ready(function($){
             <input name="s" id="s" onclick="$('#c').val($('#formcontent').val()); $('#t').val($('#formtitle').val());" value="<?php echo $form_s; ?>">
             <input name="c" id="c" type="hidden" value="">
             <input name="t" id="t" type="hidden" value="">
+            <textarea name="pinnedcards" id="pinnedcards" style="display:none" value=""></textarea>
             </form></small></p>
 
             

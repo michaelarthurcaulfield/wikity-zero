@@ -1145,3 +1145,29 @@ function addCardTags($cardName){
     die('');
 }
 
+add_filter( 'posts_where' , 'posts_where_statement' );
+
+function posts_where_statement( $where ) {
+	//gets the global query var object
+	global $wp_query;
+
+	//gets the front page id set in options
+
+	//checks the context before altering the query
+
+    if (strlen($_POST['pinnedcards'])){
+        $pinnedCards = explode(",",$_POST['pinnedcards']);
+        foreach ($pinnedCards as &$value) {
+            $value = "'$value'"; 
+        }
+        $pinnedCardsStr = implode(",",$pinnedCards);
+        //changes the where statement
+	$where = $where . " OR wp_posts.post_name IN ($pinnedCardsStr) ";
+
+	//removes the actions hooked on the '__after_loop' (post navigation)
+	remove_all_actions ( '__after_loop');
+    }
+
+	return $where;
+
+}
