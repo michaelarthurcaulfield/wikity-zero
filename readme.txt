@@ -8,7 +8,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, pink, purple, white, yellow, dark, light, two-columns, left-sidebar, fixed-layout, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 
 ==  Wikity Zero ==
-Wikity Zero is a hypertext card library that runs as a WordPress theme. 
+Wikity Zero is a tool to bookmark and link ideas. To use Wikity, install the bookmark on your toolbar, select relevant text on a page you are looking at, and give the idea expressed by that text a name. Over time, link that card to other ideas, add additional sources, summaries, or notes.  
 
 You can use to create a personal wiki for notes, bookmarks, photos, or anything else. Unlike traditional bookmarking tools, Wikity lets you connect ideas and share your work with others while maintaining attribution. And because it runs on WordPress your work is always portable -- your site can run anywhere WordPress can (You do need sufficient permissions to upload the theme).
 
@@ -50,7 +50,7 @@ Source: http://www.genericons.com
 
 == Changelog ==
 
-This changelog is not very good until the GitHub move (July 24, 2016) forced us to log edits more consistently. Sorry.
+This changelog was not kept up well until the GitHub move (July 24, 2016) forced us to log edits more consistently. Sorry.
 
 Added in 0.4 (July 30, 2016):
 

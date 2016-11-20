@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * The main template file
  *
@@ -257,7 +255,7 @@ get_header();
     
     if (strlen($_GET['selection'])) :
       $form_c = '> '.$_GET['selection'] . ' [source]('. $_GET['sourceurl'].')';
-      $form_c = "\n\n".str_replace("\n","\n> ", $form_c);
+      $form_c = " \n\n".str_replace("\n","\n> ", $form_c);
       $form_c = str_replace('\"','"', $form_c);
       $form_c = str_replace("\\'","'", $form_c);
       $after = 'close';
@@ -270,7 +268,7 @@ get_header();
       
       	<div class="entry-content">
       		  <form name="createform" id="createform" method="post">
-      		    <input name="title" id="formtitle" style="width:85%; padding-left:5px; margin-bottom:5px" value="<?php echo $form_t; ?>" placeholder="Title"><input type="submit" style="font-size:10px; float:right" value="Post"><br>
+      		    <input name="title" id="formtitle" style="width:85%; padding-left:5px; margin-bottom:5px" value="<?php echo $form_t; ?>" placeholder="Name of Concept or Data"><input type="submit" style="font-size:10px; float:right" value="Post"><br>
       		    <textarea name="content" id="formcontent" style="display:none; height:200px; font-size:small"><?php echo $form_c; ?></textarea>
       		    <script>
                 var simplemde = new SimpleMDE({ element: $("#formcontent")[0] });
@@ -342,7 +340,7 @@ jQuery(document).ready(function($){
 	<?php endif; ?>
 	<br><small>You can read your cards by clicking the title on the card. If you are logged in, edit them by clicking the small dot after the title (full editor) or clicking on the text of the card (quick editor).</small><br><br>
 	<small>Additional options: <a href="/home">Home</a>,
-	<a href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('<?php echo get_site_url() ?>/?sourceurl='+encodeURIComponent(q)+'&selection='+encodeURIComponent(d)+'&title='+encodeURIComponent(p),'Wikity','toolbar=no,width=700,height=500'));">Wik-it!</a>,
+	<a href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('<?php echo get_site_url() ?>/?sourceurl='+encodeURIComponent(q)+'&selection='+encodeURIComponent(d)+'&title=','Wikity','toolbar=no,width=700,height=500'));">Wik-it!</a>,
 						<?php wp_loginout($_SERVER['REQUEST_URI']); ?>, <a href="?s=Settings::">Settings</a>, <a href="?s=Help::">How-to</a>, <a href="https://github.com/michaelarthurcaulfield/wikity-zero/archive/master.zip">Get Wikity</a><br>
 						<form method="post" action="./">Search:
             <input name="s" id="s" onclick="$('#c').val($('#formcontent').val()); $('#t').val($('#formtitle').val());" value="<?php echo $form_s; ?>">
