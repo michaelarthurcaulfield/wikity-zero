@@ -922,7 +922,7 @@ function do_quick_update($wpdb){
   $content = str_replace("[=](http","[source](http",$content);
   $content = str_replace("[-](http","[link](http",$content);
 
-
+  $tags =  $_POST['tags'];
 
   /* If slug exists update page and redirect */
 
@@ -939,7 +939,8 @@ function do_quick_update($wpdb){
     'slug'           => $slug,
     'post_content'   => $content,
     'post_title'     => $title,
-    'post_status'    => 'publish'
+    'post_status'    => 'publish',
+    'tags_input'    =>  $tags
     );
    wp_insert_post( $my_post, true );
   } else {
@@ -947,7 +948,8 @@ function do_quick_update($wpdb){
     'slug'           => $slug,
     'post_content'   => $content,
     'post_title'     => "Untitled: ".uniqid(),
-    'post_status'    => 'publish'
+    'post_status'    => 'publish',
+    'tags_input'    =>  $tags
     );
    wp_insert_post( $my_post, true );
   }

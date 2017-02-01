@@ -274,7 +274,7 @@ get_header();
                 var simplemde = new SimpleMDE({ element: $("#formcontent")[0] });
                 simplemde.options.insertTexts.image= ["![](http://image_url", ")"];
               </script>
-
+              <input name="tags" id="tags"  placeholder="tags, comma-separated" >
       		    <input type="hidden" name="action" value="update">
       		    <input name="after" type="hidden" value="<?php echo $after; ?>">
 
