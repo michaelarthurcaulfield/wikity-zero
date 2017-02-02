@@ -930,7 +930,8 @@ function do_quick_update($wpdb){
 
     $my_post = array(
         'ID'           => $postid,
-        'post_content'   => $content
+        'post_content'   => $content,
+        'tags_input'    =>  $tags
     );
     wp_update_post( $my_post );
   } elseif ($title != '') {
@@ -1173,3 +1174,16 @@ function posts_where_statement( $where ) {
 	return $where;
 
 }
+
+function wz_echo_post_tags( $i ) {
+    $tagstr = '';
+    $posttags = get_the_tags($i);
+    if ($posttags) {
+      foreach($posttags as $tag) {
+        $tagstr = $tagstr . $tag->name . ', '; 
+      }
+      $tagstr = substr($tagstr , 0, -2);
+    } 
+    echo $tagstr;
+}
+
