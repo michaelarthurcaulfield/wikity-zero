@@ -338,6 +338,7 @@ function updateUrlList(val, op) {
 function sendToBigEditor(id, op){
 	simplemde.value($("#formcontent"+id).val());
 	$("#formtitle").val($("#formtitle"+id).val());
+	$("#tags").val($("#tags"+id).val());
 	$("html, body").animate({ scrollTop: 0 }, "slow");
 	$('#formcontent').addClass("attention");  
 }
