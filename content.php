@@ -70,6 +70,7 @@ if (is_home() or is_search() or is_category()) :
 	    <form method="post" style="height:90%">
 		    <input name="title" type="hidden" id="formtitle<?php echo get_the_ID();?>" value="<?php the_title(); ?>">
 		    <textarea name="content" id="formcontent<?php echo get_the_ID();?>" style="height:85%; font-size:small"><?php echo get_the_content(); ?></textarea>
+				<?php if(get_theme_mod('checkbox_tags') == true) echo wz_build_tag_edit(get_the_ID());?>
 		    <input type="hidden" name="action" value="update">
         <input name="s" id="s" type="hidden" value="<?php echo $_POST['s']; ?>">
 		    <input type="submit" style="font-size:10px" value="Update"> &nbsp;

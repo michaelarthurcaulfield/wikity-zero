@@ -922,7 +922,7 @@ function do_quick_update($wpdb){
   $content = str_replace("[=](http","[source](http",$content);
   $content = str_replace("[-](http","[link](http",$content);
 
-
+  $tags =  $_POST['tags'];
 
   /* If slug exists update page and redirect */
 
@@ -930,7 +930,8 @@ function do_quick_update($wpdb){
 
     $my_post = array(
         'ID'           => $postid,
-        'post_content'   => $content
+        'post_content'   => $content,
+        'tags_input'    =>  $tags
     );
     wp_update_post( $my_post );
   } elseif ($title != '') {
@@ -939,7 +940,8 @@ function do_quick_update($wpdb){
     'slug'           => $slug,
     'post_content'   => $content,
     'post_title'     => $title,
-    'post_status'    => 'publish'
+    'post_status'    => 'publish',
+    'tags_input'    =>  $tags
     );
    wp_insert_post( $my_post, true );
   } else {
@@ -947,7 +949,8 @@ function do_quick_update($wpdb){
     'slug'           => $slug,
     'post_content'   => $content,
     'post_title'     => "Untitled: ".uniqid(),
-    'post_status'    => 'publish'
+    'post_status'    => 'publish',
+    'tags_input'    =>  $tags
     );
    wp_insert_post( $my_post, true );
   }
@@ -1171,3 +1174,53 @@ function posts_where_statement( $where ) {
 	return $where;
 
 }
+
+function wz_build_tagstring($id){
+  $tagstr = '';
+    $posttags = get_the_tags($id);
+    if ($posttags) {
+      foreach($posttags as $tag) {
+        $tagstr = $tagstr . $tag->name . ', '; 
+      }
+      $tagstr = substr($tagstr , 0, -2);
+    } 
+    return $tagstr;
+}
+
+/*
+function wz_echo_post_tags( $id ) {
+    //echo wz_build_tagstring($id);
+}
+*/
+// add theme customisation controls for tag functionality
+function wz_register_theme_customizer( $wp_customize ) {
+    $wp_customize->add_section('wz_tags_section', array(
+        'title'    => __('Tag Functions', 'Wikity-Zero'),
+        'description' => '',
+        'priority' => 500,
+    ));
+
+    $wp_customize->add_setting('theme_mods_wikity-zero[checkbox_tags]', array(
+    //$wp_customize->add_setting('checkbox_tags', array(
+        'capability' => 'edit_theme_options',
+        'type'       => 'option',
+    ));
+ 
+    $wp_customize->add_control('display_tag_options', array(
+        'settings' => 'theme_mods_wikity-zero[checkbox_tags]',
+        //'settings' => 'checkbox_tags',
+        'label'    => __('Display Tag Options'),
+        'section'  => 'wz_tags_section',
+        'type'     => 'checkbox',
+    ));
+}
+add_action( 'customize_register', 'wz_register_theme_customizer' ); 
+
+
+function wz_build_tag_edit($id){
+  $tagstring = ($id == null) ? '' : wz_build_tagstring($id);
+  $result = '<input name="tags"  id="tags' . $id . '" placeholder="tags, comma-separated" style="font-size:small" value="' .  $tagstring . '">';
+  return $result;
+}
+
+
