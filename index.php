@@ -205,6 +205,7 @@ if (strlen($_GET['fedwiki']) > 0){
 // GET CARD
 
 if (strlen($_GET['slug']) > 0){
+  $slug = $_GET['slug'];
   define('IFRAME_REQUEST' , true);
   /** WordPress Administration Bootstrap */
   getCard($_GET['site'], $_GET['slug'], $wpdb);
